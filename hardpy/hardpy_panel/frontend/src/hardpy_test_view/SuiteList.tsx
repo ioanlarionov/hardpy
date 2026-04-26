@@ -175,8 +175,7 @@ export class SuiteList extends React.Component<
 
     return (
       <>
-        <div>
-          <H1>{db_state.name}</H1>
+        <div className="suite-list-header">
           {db_state.test_stand && (
             <Tag minimal style={TAG_ELEMENT_STYLE}>
               {t("suiteList.standName")}: {db_state.test_stand?.name}

@@ -295,16 +295,25 @@ export class TestSuite extends React.Component<Props, State> {
     if (!i18n?.isInitialized) {
       return <div>{t("testSuite.loading")}</div>;
     }
+
+    const progress = this.getSectionProgress();
+    const showSelectAll =
+      this.props.selectionSupported && this.props.manualCollectMode;
+
     return (
       <Callout style={{ padding: 0, borderRadius: 0 }} className="test-suite">
-        <div style={{ display: "flex" }}>
-          <div style={{ flex: "1 1 0%" }}>
+        <div className="test-suite-header">
+          <div className="section-header-main">
             <Button
-              style={{ margin: "2px" }}
               minimal={true}
+              style={{ padding: 0, minWidth: 0 }}
               onClick={this.handleClick}
             >
-              <div style={{ display: "flex", alignItems: "center" }}>
+              <div className="section-title-row">
+                <Icon
+                  style={{ marginRight: "8px" }}
+                  icon={this.state.isOpen ? "chevron-down" : "chevron-right"}
+                />
                 <TestStatus
                   status={
                     this.props.commonTestRunStatus != "run" &&
@@ -314,38 +323,32 @@ export class TestSuite extends React.Component<Props, State> {
                       : this.props.test.status
                   }
                 />
-                <Icon
-                  style={{ marginRight: "10px", marginLeft: "10px" }}
-                  icon={this.state.isOpen ? "chevron-down" : "chevron-right"}
-                ></Icon>
-                {this.props.selectionSupported && (
-                  <Checkbox
-                    style={{ marginRight: "60px" }}
-                    checked={this.isAllTestsSelected()}
-                    indeterminate={this.isSomeTestsSelected()}
-                    onChange={this.handleSelectAll}
-                    onClick={(e) => e.stopPropagation()}
-                  />
-                )}
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    minWidth: "65px",
-                  }}
-                >
-                  <span
-                    className={Classes.TEXT_DISABLED}
-                    style={{ marginRight: "20px" }}
-                  >
-                    {this.props.index + 1}
-                  </span>
-                  <span>{this.renderName(this.props.test.name)}</span>
-                </div>
+                <span className="section-name">
+                  {this.renderName(this.props.test.name)}
+                </span>
               </div>
             </Button>
           </div>
-          {this.renderTestSuiteRightPanel(this.props.test)}
+          <div className="section-header-actions">
+            {showSelectAll && (
+              <div className="select-all-group">
+                <span className="select-all-label">select all</span>
+                <Checkbox
+                  checked={this.isAllTestsSelected()}
+                  indeterminate={this.isSomeTestsSelected()}
+                  onChange={this.handleSelectAll}
+                  onClick={(e) => e.stopPropagation()}
+                />
+              </div>
+            )}
+            {this.renderTestSuiteRightPanel(this.props.test)}
+          </div>
+        </div>
+        <div className="section-progress">
+          <div
+            className="section-progress-fill"
+            style={{ width: `${progress}%` }}
+          />
         </div>
         <Collapse
           isOpen={this.state.isOpen}
@@ -756,6 +759,21 @@ export class TestSuite extends React.Component<Props, State> {
    */
   private getModuleTechName(): string {
     return this.props.moduleTechName;
+  }
+
+  /**
+   * Computes how many tests in the suite are complete and returns completion percentage.
+   * @returns {number} Completion percentage from 0 to 100.
+   */
+  private getSectionProgress(): number {
+    const cases = Object.values(this.props.test.cases || {});
+    if (cases.length === 0) {
+      return 0;
+    }
+    const completedCount = cases.filter((test) =>
+      test.status && !["ready", "run"].includes(test.status)
+    ).length;
+    return Math.round((completedCount / cases.length) * 100);
   }
 
   /**

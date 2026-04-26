@@ -24,6 +24,11 @@ html {
   height: inherit;
 }
 
+body {
+  font-family: 'Golos Text', sans-serif;
+  background: #F9FAFB;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -49,4 +54,169 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.App {
+  background: #fbfbfd;
+  min-height: 100vh;
+  color: #1d1d26;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px 32px;
+  background: #ffffff;
+  border-bottom: 1px solid #ececf2;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.app-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.app-brand-name {
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.app-brand-name svg {
+  height: 100%;
+  width: auto;
+}
+
+.app-brand-subtitle {
+  font-size: 13px;
+  color: #6f6f85;
+  font-weight: 500;
+}
+
+.app-header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-icon-button {
+  position: absolute;
+  width: 5px;
+  height: 22px;
+  right: 32px;
+  top: 28px;
+  min-width: unset;
+  color: #4e4e66;
+  background: none;
+  border: none !important;
+  outline: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.header-star-button {
+  position: absolute;
+  right: 80px;
+  top: 26px;
+  color: #4e4e66;
+  background: none;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.header-star-button span {
+  font-size: 14px;
+  color: #4e4e66;
+}
+
+.settings-menu-portal {
+  z-index: 100;
+}
+
+.app-content {
+  width: min(1220px, calc(100% - 64px));
+  margin: 0 auto;
+  padding: 24px 0;
+}
+
+.page-section {
+  width: 100%;
+}
+
+.page-title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.page-title {
+  font-size: 38px;
+  font-weight: 800;
+  margin: 0;
+  color: #1b1b23;
+}
+
+.page-config-label {
+  color: #66667a;
+  font-size: 14px;
+  padding: 8px 14px;
+  background: #f5f0ff;
+  border-radius: 999px;
+}
+
+.page-content-row {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.suite-card {
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 18px 42px rgba(99, 91, 160, 0.08);
+  padding: 28px;
+}
+
+.app-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background: #ffffff;
+  border-top: 1px solid #ececf2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  box-shadow: 0 -6px 18px rgba(99, 91, 160, 0.08);
+}
+
+.app-footer-progress {
+  flex: 1;
+  margin-right: 18px;
+}
+
+.app-footer-action {
+  width: min(280px, 100%);
+}
+
+.rdt_TableHeadRow,
+.rdt_TableBody {
+  border: none;
+}
+
+.rdt_TableHeadRow {
+  background: #f7f5ff;
 }

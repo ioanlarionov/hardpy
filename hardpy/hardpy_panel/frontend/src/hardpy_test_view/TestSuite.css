@@ -10,3 +10,88 @@
   vertical-align: top !important;
   align-items: flex-start !important;
 }
+
+.test-suite {
+  margin-top: 20px;
+  border-radius: 18px;
+  border: 1px solid #e8e8f3;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.test-suite-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px 14px;
+}
+
+.section-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1b1b23;
+}
+
+.section-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.select-all-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #5d5d6d;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.select-all-label {
+  text-transform: capitalize;
+}
+
+.section-progress {
+  background: #f3efff;
+  height: 5px;
+  width: 100%;
+  position: relative;
+}
+
+.section-progress-fill {
+  background: linear-gradient(90deg, #b26eff 0%, #6d42ff 100%);
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.test-suite .rdt_Table {
+  border-radius: 0 0 18px 18px;
+}
+
+.rdt_TableHeadRow {
+  background: #faf8ff;
+  border-bottom: 1px solid #ececf2;
+}
+
+.rdt_TableHeadCell, .rdt_TableCell {
+  padding: 14px 16px !important;
+}
+
+.rdt_TableBody .rdt_TableRow {
+  border-bottom: 1px solid #f0eff6;
+}
+
+.rdt_TableBody .rdt_TableRow:hover {
+  background: #faf5ff;
+}
+
+.rdt_TableRow:last-child {
+  border-bottom: none;
+}
